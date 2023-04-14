@@ -1,7 +1,17 @@
 {
+  "name": "to-do-list",
+  "version":"1.0,0",
+  "description": "to do list made with MERN stack",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "mongoose": "^7.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }
