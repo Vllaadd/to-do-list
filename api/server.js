@@ -6,3 +6,12 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+mongoose.connect("mongodb://locahost/to-do-list", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+    .then(()=> console.log("Connected to DB"))
+    .catch(console.error);
+
+app.listen(3001, ()=> console.log("Server started on port 3001"));
+
