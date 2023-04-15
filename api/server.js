@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("mongodb://locahost/to-do-list", {
+mongoose.connect("mongodb://localhost/to-do-list", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
