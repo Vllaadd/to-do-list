@@ -11,3 +11,7 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:3001/todo/delete/1681549708158
+
+###
+
+PUT http://localhost:3001/todo/complete/1681550687181
