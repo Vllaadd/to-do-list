@@ -1,6 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const {ObjectId} = require('mongoose');
 const cors = require('cors');
 
 const app = express();
@@ -32,21 +31,19 @@ app.post('/todo/new', (req, res) => {
 })
 
 app.delete('/todo/delete/:id', async(req, res) =>{
-    if(!mongoose.Types.ObjectId.isValid(req.params.id)){
-        return res.status(400).send('Invalid Object Id');
-    }
-    const result = await Todo.findByIdAndDelete(id);
+    const result = await Todo.findByIdAndDelete(req.params.id);
     res.json(result)
 });
 
-app.put("/todo/complete/:id", async(req, res) =>{
+
+app.put("/todo/update/:id", async(req, res) =>{
     const todo = await Todo.findById(req.params.id);
 
-    todo.complete = !todo.complete;
+    todo.text = req.body.text;
     todo.save();
     res.json(todo);
 
-})
+});
 
 
 app.listen(3001, ()=> console.log("Server started on port 3001"));
