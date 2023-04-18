@@ -8,8 +8,7 @@ function App() {
   const [newTodo, setNewTodo] = useState("");
 
   useEffect(() =>{
-    GetTodos();
-    console.log(todos); 
+    GetTodos(); 
   });
 
   const GetTodos = () => {
