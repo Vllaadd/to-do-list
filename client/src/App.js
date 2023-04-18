@@ -9,15 +9,13 @@ function App() {
 
   useEffect(() =>{
     GetTodos();
-    console.log(todos);
-  }, []);
+    console.log(todos); 
+  });
 
   const GetTodos = () => {
     fetch(API_BASE + "/todos")
     .then(res => res.json())
-    .then(data => {
-      setTodos(data)
-    })
+    .then(data => setTodos(data))
     .catch(err => console.error("Error: ", err));
   }
 
@@ -27,13 +25,13 @@ function App() {
       <h4>Your Task</h4>
 
       <div className="todos">
-        {todos.map(todo =>{
+        {todos.map(todo =>(
           <div className="todo" key={todo._id}>
             <div className="checkbox"></div>
             <div className="text">{ todo.text }</div>
           <div className="delete-todo">x</div>
         </div>
-        })}
+        ))}
       </div>
     </div>
   );
