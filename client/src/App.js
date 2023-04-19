@@ -18,17 +18,17 @@ function App() {
     .catch(err => console.error("Error: ", err));
   }
 
-  // const completeTodo = async id => {
-  //   const data = await fetch(API_BASE + "/todo/complete/" + id)
-  //   .then(res => res.json())
+  const completeTodo = async id => {
+    const data = await fetch(API_BASE + "/todo/complete/" + id)
+    .then(res => res.json())
 
-  //   setTodos(todos => todos.map(todo => {
-  //     if(todo._id === data._id){
-  //       todo.complete = data.complete
-  //     }
-  //     return todo;
-  //   }))
-  // }
+    setTodos(todos => todos.map(todo => {
+      if(todo._id === data._id){
+        todo.complete = data.complete
+      }
+      return todo;
+    }))
+  }
 
   return (
     <div className="App">
