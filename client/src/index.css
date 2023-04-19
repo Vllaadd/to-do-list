@@ -58,13 +58,17 @@ h4{
   transition: 0.4s;
 }
 
-.todo .is-complete .checkbox{
+.todo .is-complete .checkbox {
   background-color: var(--primary);
   background-image:  linear-gradient(to bottom, var(--primary), var(--secondary));
 }
 
 .todo .text{
   font-size: 20px;
+}
+
+.todo.is-complete .text{
+  text-decoration: line-through;
 }
 
 .todo .delete-todo{
