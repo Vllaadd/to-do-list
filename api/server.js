@@ -36,7 +36,7 @@ app.delete('/todo/delete/:id', async(req, res) =>{
 });
 
 
-app.put("/todo/update/:id", async(req, res) =>{
+app.get("/todo/update/:id", async(req, res) =>{
     const todo = await Todo.findById(req.params.id);
 
     todo.text = req.body.text;
