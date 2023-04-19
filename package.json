@@ -1,5 +1,13 @@
 {
   "devDependencies": {
     "concurrently": "^8.0.1"
+  },
+"scripts": {
+  "server": "node backend/server.js",
+  "client": "cd react && npm start",
+  "start": "concurrently \"npm run server\" \"npm run client\"",
+  "build": "cd react && npm run build",
+  "test": "cd react && npm test",
+  "eject": "cd react && npm run eject"
   }
 }
