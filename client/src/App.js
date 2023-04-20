@@ -33,7 +33,7 @@ function App() {
   const deleteTodo = async id => {
     const data = await fetch(API_BASE + "/todo/delete/" + id, { method: "DELETE"})
       .then(res => res.json());
-    setTodos(todos => todos.filter(todo => todo.id !== data._id))
+    setTodos(todos => todos.filter(todo => todo._id !== data._id))
   }
 
   const addTodo = async () => {

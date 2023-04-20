@@ -16,12 +16,13 @@ mongoose.connect("mongodb+srv://vladzizic:ukvC6AHw4dmyrCml@cluster0.mdqkrcm.mong
 
 const Todo = require('./models/Todos');
 
-//routes•••••••••••••••••••••••••••••••••••••••••••••
+//routes••••••••••••••••••••••••••••••••••••••••••••••••••
 app.get('/todos', async(req, res) =>{
     const todos = await Todo.find();
     res.json(todos);
 });
 
+// route for creating a new task•••••••••••••••••••••••••••
 app.post('/todo/new', (req, res) => {
         const todo = new Todo({
             text: req.body.text
@@ -30,12 +31,7 @@ app.post('/todo/new', (req, res) => {
         res.json(todo);
 })
 
-app.delete('/todo/delete/:id', async(req, res) =>{
-    const result = await Todo.findByIdAndDelete(req.params.id);
-    res.json(result)
-});
-
-
+// route for completed tasks••••••••••••••••••••••••••••••• 
 app.get("/todo/complete/:id", async (req, res) => {
     const todo = await Todo.findById(req.params.id);
 
@@ -44,6 +40,14 @@ app.get("/todo/complete/:id", async (req, res) => {
     res.json(todo);
 
 });
+// route for deleted tasks•••••••••••••••••••••••••••••••••• 
+app.delete('/todo/delete/:id', async(req, res) =>{
+    const result = await Todo.findByIdAndDelete(req.params.id);
+    res.json(result)
+});
+
+
+
 
 
 app.listen(3001, ()=> console.log("Server started on port 3001"));
