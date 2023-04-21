@@ -40,6 +40,7 @@ app.get("/todo/complete/:id", async (req, res) => {
     res.json(todo);
 
 });
+
 // route for deleted tasks•••••••••••••••••••••••••••••••••• 
 app.delete('/todo/delete/:id', async(req, res) =>{
     const result = await Todo.findByIdAndDelete(req.params.id);

@@ -18,6 +18,7 @@ function App() {
       .then(data => setTodos(data))
       .catch(err => console.error("Error: ", err));
   }
+  
 // mark the task complete••••••••••••••••••••••••••••••••••••••••••••••••
   const completeTodo = async id => {
     const data = await fetch(API_BASE + "/todo/complete/" + id)
