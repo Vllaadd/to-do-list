@@ -11,13 +11,14 @@ function App() {
     GetTodos();
   }, []);
 
+//get all tasks••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• 
   const GetTodos = () => {
     fetch(API_BASE + "/todos")
       .then(res => res.json())
       .then(data => setTodos(data))
       .catch(err => console.error("Error: ", err));
   }
-
+// mark the task complete••••••••••••••••••••••••••••••••••••••••••••••••
   const completeTodo = async id => {
     const data = await fetch(API_BASE + "/todo/complete/" + id)
       .then(res => res.json())
@@ -30,6 +31,7 @@ function App() {
     }))
   }
 
+//delete the task•••••••••••••••••••••••••••••••••••••••••••••••••••••••••
   const deleteTodo = async id => {
     const data = await fetch(API_BASE + "/todo/delete/" + id, { method: "DELETE" })
       .then(res => res.json());
@@ -37,6 +39,7 @@ function App() {
     setTodos(todos => todos.filter(todo => todo._id !== data._id))
   }
 
+  //add a new task•••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
   const addTodo = async () => {
     const data = await fetch(API_BASE + "/todo/new", {
       method: "POST",
@@ -68,7 +71,7 @@ function App() {
           </div>
         ))}
       </div>
-      {/* popup•••••••••••••••••••••••••••••••••••••••••••••••••• */}
+{/* popup••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• */}
       <div className='addPopup' onClick={() => setPopupActive(true)}>+</div>
       {popupActive ? (
         <div className='popup'>
