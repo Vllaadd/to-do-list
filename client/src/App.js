@@ -11,7 +11,7 @@ function App() {
     GetTodos();
   }, []);
 
-//get all tasks••••••••••••••••••••••••••••••••••••••••••••••••••••••••••• 
+//GET ALL TASKS 
   const GetTodos = () => {
     fetch(API_BASE + "/todos")
       .then(res => res.json())
@@ -19,7 +19,7 @@ function App() {
       .catch(err => console.error("Error: ", err));
   }
   
-// mark the task complete••••••••••••••••••••••••••••••••••••••••••••••••
+// MARK TASKS COMPLETE
   const completeTodo = async id => {
     const data = await fetch(API_BASE + "/todo/complete/" + id)
       .then(res => res.json())
@@ -32,7 +32,7 @@ function App() {
     }))
   }
 
-//delete the task•••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+// DELETE TASKS
   const deleteTodo = async id => {
     const data = await fetch(API_BASE + "/todo/delete/" + id, { method: "DELETE" })
       .then(res => res.json());
@@ -40,7 +40,7 @@ function App() {
     setTodos(todos => todos.filter(todo => todo._id !== data._id))
   }
 
-  //add a new task•••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+  // ADD NEW TASKS
   const addTodo = async () => {
     const data = await fetch(API_BASE + "/todo/new", {
       method: "POST",
