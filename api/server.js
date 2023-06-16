@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-//connecting to MongoDB•••••••••••••••••••••••••••••••
+// CONNECTING TO MONGO
 mongoose.connect("mongodb+srv://vladzizic:ukvC6AHw4dmyrCml@cluster0.mdqkrcm.mongodb.net/to-do-list", {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -16,13 +16,13 @@ mongoose.connect("mongodb+srv://vladzizic:ukvC6AHw4dmyrCml@cluster0.mdqkrcm.mong
 
 const Todo = require('./models/Todos');
 
-//routes••••••••••••••••••••••••••••••••••••••••••••••••••
+// ROUTES
 app.get('/todos', async(req, res) =>{
     const todos = await Todo.find();
     res.json(todos);
 });
 
-// route for creating a new task•••••••••••••••••••••••••••
+// ROUTES FOR CREATING A NEW TASK 
 app.post('/todo/new', (req, res) => {
         const todo = new Todo({
             text: req.body.text
@@ -31,7 +31,7 @@ app.post('/todo/new', (req, res) => {
         res.json(todo);
 })
 
-// route for completed tasks••••••••••••••••••••••••••••••• 
+// ROUTES FOR COMPLETED TASKS
 app.get("/todo/complete/:id", async (req, res) => {
     const todo = await Todo.findById(req.params.id);
 
@@ -40,7 +40,7 @@ app.get("/todo/complete/:id", async (req, res) => {
     res.json(todo);
 });
 
-// route for deleted tasks•••••••••••••••••••••••••••••••••• 
+// ROUTE FOR DELETED TASKS 
 app.delete('/todo/delete/:id', async(req, res) =>{
     const result = await Todo.findByIdAndDelete(req.params.id);
     res.json(result)
